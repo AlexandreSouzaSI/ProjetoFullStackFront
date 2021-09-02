@@ -1,0 +1,65 @@
+.conteudoComanda {
+    width: 1190px;
+    height: 630px;
+    display: flex;
+    margin-top: 40px;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.informaçoesComanda {
+    width: 400px;
+    height: 630px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.info {
+    font-size: 25px;
+}
+
+.informaçoesPedidos {
+    width: 600px;
+    height: 630px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.listaPedidos {
+    width: 600px;
+    height: 595px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.produtosComanda {
+    width: 350px;
+    height: 500px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.preçoComanda {
+    width: 245px;
+    height: 500px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.valorTotal {
+    align-items: center;
+    margin-bottom: 40px;
+}
+
+
+
+
+

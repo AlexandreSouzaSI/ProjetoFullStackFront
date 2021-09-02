@@ -1,0 +1,65 @@
+.conteudoFecharConta {
+    width: 1190px;
+    height: 630px;
+    display: flex;
+    margin-top: 40px;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.informaçoesFecharConta {
+    width: 400px;
+    height: 630px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.infoFecharConta {
+    font-size: 25px;
+}
+
+.informaçoesPedidosFecharConta {
+    width: 600px;
+    height: 630px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.listaPedidosFecharConta {
+    width: 600px;
+    height: 595px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.produtosComandaFecharConta {
+    width: 350px;
+    height: 500px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.preçoComandaFecharConta {
+    width: 245px;
+    height: 500px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.valorTotalFecharConta {
+    align-items: center;
+    margin-bottom: 40px;
+}
+
+
+
+
+

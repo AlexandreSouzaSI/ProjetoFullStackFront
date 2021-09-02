@@ -1,0 +1,20 @@
+.conteudoCadastro {
+    width: 1190px;
+    height: 630px;
+    display: flex;
+    margin-top: 40px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.botaoCadastro {
+    width: 400px;
+}
+
+.rodape {
+    width: 1190px;
+    height: 80px;
+    min-width: 360px;
+    border-top: 0px;
+}

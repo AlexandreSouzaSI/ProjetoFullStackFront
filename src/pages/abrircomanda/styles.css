@@ -1,0 +1,35 @@
+.numeromesa {
+    width: 1190px;
+    height: 630px;
+    display: flex;
+    margin-top: 40px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.estabelecimentoComanda {
+    width: 1190px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.abrirComanda {
+    width: 1190px;
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.mesas {
+    width: 200px;
+    height: 150px;
+}
+
+
+

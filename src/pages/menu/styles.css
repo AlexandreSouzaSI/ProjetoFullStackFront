@@ -1,0 +1,37 @@
+
+.produtopreço {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    width: 600px;
+}
+
+.produtotexto {
+    margin-left: 30px;
+    font-weight: bolder;
+}
+
+.preçotexto {
+    margin-right: 30px;
+    font-weight: bolder;
+}
+
+.conteudoMenu {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.produtosMenu {
+    width: 500px;
+}
+
+.preçoMenu {
+    width: 100px;
+}
+
+.botoesMenu {
+    width: 70px;
+    cursor: pointer;
+}

@@ -1,0 +1,56 @@
+.conteudoEventos {
+    width: 1190px;
+    height: 630px;
+    display: flex;
+    margin-top: 40px;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+}
+
+.imagemInicialEventos {
+    width: 400px;
+    height: 630px;
+    cursor: pointer;
+}
+
+#bebidaEvento {
+    width: 400px;
+    align-items: center;
+    text-align: center;
+    margin-top: 150px;
+}
+
+.textoInicialEventos {
+    width: 595px;
+    height: 630px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.informaçãoEvento {
+    justify-content: center;
+    width: 600px;
+    height: 200px;
+    line-height: 250%;
+    font-size: 20px;
+    align-items: center;
+}
+
+.mapa {
+    justify-content: center;
+    width: 600px;
+    height: 300px;
+    font-size: 20px;
+    border: 1px solid black;
+    align-items: center;
+}
+
+.rodape {
+    width: 1190px;
+    height: 80px;
+    min-width: 360px;
+    border-top: 0px;
+}

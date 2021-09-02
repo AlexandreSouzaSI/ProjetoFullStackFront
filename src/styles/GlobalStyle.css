@@ -1,0 +1,93 @@
+body {
+    margin: 0;
+    box-sizing: border-box;
+    padding: 0;
+    background-color: rgb(240, 239, 239);
+    font-family: 'Prociono', serif;
+}
+
+button {
+    cursor: pointer;
+}
+
+.container {
+    width: 1200px;
+    height: 800px;
+    align-content: center;
+    margin: 0 auto;
+    margin-top: 100px;
+    display: flex;
+    flex-direction: column;
+    min-width: 360px;
+}
+
+.cabecalho {
+    width: 1190px;
+    height: 80px;
+    min-width: 360px;
+    border-bottom: 0px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.usuariologado {
+    margin-top: -10px;
+    margin-right: 50px;
+    font-size: 30px;
+    cursor: pointer;
+    font-weight: bolder;
+}
+
+.notificaçoes {
+    margin-top: 15px;
+    margin-right: 70px;
+    font-size: 30px;
+    cursor: pointer;
+    font-weight: bolder;
+}
+
+.logo {
+    margin-top: -3px;
+    flex-grow: 1;
+}
+
+.logo1 {
+    width: 150px;
+    height: 80px;
+}
+
+.login {
+    margin-top: -10px;
+    margin-right: 50px;
+    font-size: 30px;
+    width: 150px;
+    cursor: pointer;
+    font-weight: bolder;
+}
+
+.cadastre {
+    margin-top: -10px;
+    margin-right: 50px;
+    font-size: 30px;
+    width: 150px;
+    cursor: pointer;
+    font-weight: bolder;
+}
+
+.voltar {
+    margin-top: -10px;
+    margin-right: 50px;
+    font-size: 30px;
+    width: 150px;
+    cursor: pointer;
+    font-weight: bolder;
+}
+
+.voltar1 {
+    margin-top: 10px;
+    margin-right: 50px;
+    font-size: 30px;
+    width: 150px;
+    cursor: pointer;
+    font-weight: bolder;
+}

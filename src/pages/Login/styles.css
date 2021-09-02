@@ -1,0 +1,31 @@
+.conteudoLogin {
+    width: 1190px;
+    height: 630px;
+    display: flex;
+    margin-top: 40px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.botaoLogin {
+    width: 400px;
+}
+
+.voltar {
+    width: 150px;
+}
+
+#entrar {
+    width: 200px;
+    align-items: center;
+    margin-top: 20px;
+    margin-left: 90px;
+}
+
+.rodape {
+    width: 1190px;
+    height: 80px;
+    min-width: 360px;
+    border-top: 0px;
+}
