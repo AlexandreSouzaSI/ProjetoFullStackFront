@@ -12,7 +12,6 @@ function Menu() {
   const [produtos, setProdutos] = useState([])
   const [loading, setLoading] = useState(true);
   const [comandaid, setComandaId] = useState();
-  const [mesa, setMesa] = useState(true);
   
   const history = useHistory()
 
@@ -137,10 +136,10 @@ function Menu() {
                         {produtos.map(post => (
                           <MenuItem key={post.id_produto} >
                               <div className="produtosMenu">
-                                <p>{post.produto}</p>
+                                <p>{post.name}</p>
                               </div>
                               <div className="preçoMenu">
-                                <p>R$ {post.preço},00</p>
+                                <p>R$ {post.preco},00</p>
                               </div>
                               <div className="botoesMenu">
                                   <Button

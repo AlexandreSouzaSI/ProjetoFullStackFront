@@ -24,7 +24,6 @@ function AbrirComanda() {
     const [mesas, setMesas] = useState([])
     const [loading, setLoading] = useState(true);
     const [usuarioName, setUsuarioName] = useState({})
-    const [comanda, setComanda] = useState([])
     const [usuarioId, setUsuarioId] = useState([])
 
     async function addMesa(value) {
@@ -41,18 +40,11 @@ function AbrirComanda() {
              }
       
               const response = await fetch('http://localhost:4000/Comanda', values);
-              const data = await response.json();
+              await response.json();
       
-                  setComanda(data)
-                  console.log(data)
                   navigateToPageComanda()
 
       }
-
-      
-  
-
-
 
     useEffect(() => {
     async function loadData(){

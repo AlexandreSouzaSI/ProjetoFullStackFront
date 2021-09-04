@@ -21,10 +21,6 @@ function Comanda() {
       history.push('/fecharconta')
     }
 
-    function navigateToPageAbrirComanda() {
-      history.push('/abrircomanda')
-    }
-
     const [usuario, setUsuario] = useState([])
     const [loading, setLoading] = useState(true);
     const [produtos, setProdutos] = useState([])
@@ -147,13 +143,13 @@ function Comanda() {
                               <div className="produtosComanda">
                                   <p>Produtos</p>
                                   {produtos.map(post => (
-                              <p>{post.produto}</p>
+                              <p>{post.name}</p>
                               ))}
                               </div>
                               <div className="preçoComanda">
                                 <p>Preço</p>
                                 {produtos.map(post => (
-                              <p>RS {post.preço},00</p>
+                              <p>RS {post.preco},00</p>
                               ))}
                               </div>
                               <div className="preçoComanda">

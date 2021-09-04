@@ -95,3 +95,12 @@ button {
     width: 1000px;
     height: 700px;
 }
+
+.pedidos {
+    display: flex;
+}
+
+.pedidoBebida {
+    border-bottom: 1px solid black;
+    width: 200px;
+}

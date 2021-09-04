@@ -6,29 +6,8 @@ import './styles.css'
 
 function Relatorios() {
 
-    const [comidas, setComidas] = useState([])
     const [bebidas, setBebidas] = useState([])
 
-   async function totalComidas() {
-          try{
-    
-              const values = {
-                method: 'GET',
-                headers: { 'Content-Type': 'application/json' },
-                withCredentials: true,
-                credentials: 'include'
-            }
-    
-            const response = await fetch('http://localhost:4000/comidas', values);
-            const data = await response.json();
-    
-              if (Array.isArray(data)) {
-                setComidas(data)
-              }
-          } catch (error) {
-            console.log(error)
-          }
-        }
     
     async function totalBebidas() {
           try{
@@ -64,7 +43,6 @@ function Relatorios() {
                             variant="contained" 
                             color="primary" 
                             className="loginRelatorio"
-                            onClick={totalComidas}
                             >
                             Comidas
                         </Button>
@@ -117,6 +95,25 @@ function Relatorios() {
                         </div>
                     </header>
                     <div className="conteudoRelatorio">
+                        {bebidas.map(post => (
+                          <div className="pedidos" key={post.id_produto} >
+                              <div className="pedidoBebida">
+                                <p>Produto: {post.produto}</p>
+                              </div>
+                              <div className="pedidoBebida">
+                                <p>Quantidade: {post.quantidade}</p>
+                              </div>
+                              <div className="pedidoBebida">
+                                <p>R$ {post.preço},00</p>
+                              </div>
+                              <div className="pedidoBebida">
+                                <p>Mesa:  {post.mesa}</p>
+                              </div>
+                              <div className="pedidoBebida">
+                                <p>Data:  {post.date_create}</p>
+                              </div>
+                          </div>
+                        ))}
                             {bebidas.map(post => (
                                 <ul>
                                     <p>Nome: {post.produto}</p>
