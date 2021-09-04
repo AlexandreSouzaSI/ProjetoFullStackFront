@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom'
 import Badge from '@material-ui/core/Badge';
 import MailIcon from '@material-ui/icons/Mail';
@@ -29,6 +29,38 @@ function Comanda() {
       history.push('/comanda')
     }
 
+const [usuario, setUsuario] = useState([])
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+    async function loadData(){
+      try{
+          const values = {
+            method: 'GET',
+            headers: { 'Content-Type': 'application/json' },
+            withCredentials: true,
+            credentials: 'include'
+        }
+
+        const response = await fetch('http://localhost:4000/validacaonome', values);
+        const data = await response.json();
+
+        console.log({data})
+        
+            setUsuario(data)
+            setLoading(false);
+          
+      } catch (error) {
+        console.log(error)
+      }
+    }
+      loadData()
+
+  }, [])
+
+  if (loading) {
+    return <span>Carregando...</span>
+  }
 
   return(
     <>
@@ -47,7 +79,9 @@ function Comanda() {
                             </Button>
                         </div>
                         <div className="usuariologado">
-                            <p>Ola usuario</p>
+                            {usuario.map(post => (
+                            <p>{post.name}</p>
+                            ))}
                         </div>
                         <div className="notificaçoes">
                             <Badge badgeContent={999} color="error">

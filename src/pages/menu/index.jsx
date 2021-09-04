@@ -11,6 +11,8 @@ function Menu() {
 
   const [produtos, setProdutos] = useState([])
   const [loading, setLoading] = useState(true);
+  const [comandaid, setComandaId] = useState();
+  const [mesa, setMesa] = useState(true);
   
   const history = useHistory()
 
@@ -18,16 +20,72 @@ function Menu() {
         history.push('/comanda')
     }
 
+    async function addPedido(value) {
+
+      console.log(comandaid)
+      console.log(value)
+      let valor = value;
+      let quantidade = 1;
+
+      try{
+        const values = {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ 'id_comanda': comandaid, 'id_produto': valor, 'quantidade': quantidade }),
+          withCredentials: true,
+          credentials: 'include'
+      }
+
+      const response = await fetch('http://localhost:4000/ItensComanda', values);
+      const data = await response.json();
+
+          console.log(`Valores da nova Array ${data}`)
+
+        } catch (error) {
+          console.log(error)
+        }
+    }
+
+    useEffect(() => {
+      async function loadData(){
+        try{
+            const values = {
+              method: 'GET',
+              headers: { 'Content-Type': 'application/json' },
+              withCredentials: true,
+              credentials: 'include'
+          }
+  
+          const response = await fetch('http://localhost:4000/produtos', values);
+          const data = await response.json();
+  
+            if (Array.isArray(data)) {
+              setProdutos(data)
+              setLoading(false);
+            }
+        } catch (error) {
+          console.log(error)
+        }
+      }
+        loadData()
+    }, [])
+
   useEffect(() => {
     async function loadData(){
       try{
-          const response = await fetch('http://localhost:4000/produtos')
-          const data = await response.json()
+          const values = {
+            method: 'GET',
+            headers: { 'Content-Type': 'application/json' },
+            withCredentials: true,
+            credentials: 'include'
+        }
 
-          if (Array.isArray(data)) {
-            setProdutos(data)
+        const response = await fetch('http://localhost:4000/novotoken', values);
+        const data = await response.json();
+
+            setComandaId(data[0].id_comanda)
             setLoading(false);
-          }
+
       } catch (error) {
         console.log(error)
       }
@@ -88,38 +146,13 @@ function Menu() {
                                   <Button
                                     color="primary"
                                     variant="contained"
+                                    onClick={ () => addPedido(post.id_produto) }
                                   >
-                                  +
+                                  Pedir
                                   </Button>
                               </div>
-                              <div className="botoesMenu">
-                              <Button
-                                    type="number"
-                                    color="primary"
-                                    variant="outlined"
-                                  >
-                                    0
-                                  </Button>
-                              </div>
-                              <div className="botoesMenu">
-                                  <Button
-                                    color="secondary"
-                                    variant="contained"
-                                  >
-                                  -
-                                  </Button>
-                              </div>
-
                           </MenuItem>
-                           
                         ))}
-                        <Button
-                              color="primary"
-                              variant="contained"
-                              type="submit"
-                            >
-                            Fazer Pedido
-                          </Button>
                       </div>
                     <div className="rodape">
 

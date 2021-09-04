@@ -10,96 +10,88 @@ button {
     cursor: pointer;
 }
 
-.container {
+.containerRelatorio {
     width: 1200px;
     height: 800px;
-    align-content: center;
     margin: 0 auto;
     margin-top: 100px;
     display: flex;
-    flex-direction: column;
-    min-width: 360px;
+    flex-direction: row;
+    justify-content: space-between;
 }
 
-.cabecalho {
-    width: 1190px;
-    height: 80px;
-    min-width: 360px;
-    border-bottom: 0px;
+.cabecalhoRelatorio {
+    width: 150px;
+    height: 1200px;
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
+    padding: 10px;
 }
 
 .usuariologado {
     margin-top: -10px;
     margin-right: 50px;
+    margin-bottom: 10px;
     font-size: 30px;
     cursor: pointer;
     font-weight: bolder;
 }
 
-.notificaçoes {
-    margin-top: 15px;
-    margin-right: 70px;
-    font-size: 30px;
-    cursor: pointer;
-    font-weight: bolder;
-}
-
-.logo {
+.logoRelatorio {
     margin-top: -3px;
-    flex-grow: 1;
+    margin-bottom: 10px;
 }
 
-.logo1 {
+.logo1Relatorio {
     width: 150px;
     height: 80px;
+    margin-bottom: 30px;
 }
 
-.login {
+.loginRelatorio  {
     margin-top: -10px;
     margin-right: 50px;
+    margin-bottom: 30px;
     font-size: 30px;
     width: 150px;
     cursor: pointer;
     font-weight: bolder;
 }
 
-.cadastre {
+.cadastreRelatorio  {
     margin-top: -10px;
     margin-right: 50px;
     font-size: 30px;
+    margin-bottom: 30px;
     width: 150px;
     cursor: pointer;
     font-weight: bolder;
 }
 
-.voltar {
+.cadastreRelatorio  {
     margin-top: -10px;
     margin-right: 50px;
     font-size: 30px;
+    margin-bottom: 30px;
     width: 150px;
     cursor: pointer;
     font-weight: bolder;
 }
 
-.voltar1 {
+.cadastreRelatorio  {
+    margin-top: -10px;
+    margin-right: 50px;
+    font-size: 30px;
+    margin-bottom: 30px;
+    width: 150px;
+    cursor: pointer;
+    font-weight: bolder;
+}
+
+.conteudoRelatorio {
+    padding: 40px;
     margin-top: 10px;
-    margin-right: 50px;
-    font-size: 30px;
-    width: 150px;
-    cursor: pointer;
-    font-weight: bolder;
-}
-
-.returnError {
-    color: red;
-    font-size: 20px;
-    margin-left: 80px;
-}
-
-.returnErrorCadastro {
-    color: red;
-    font-size: 20px;
-    margin-left: 20px;
+    margin-right: 10px;
+    width: 1000px;
+    height: 700px;
 }

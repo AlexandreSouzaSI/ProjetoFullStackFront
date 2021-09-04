@@ -10,6 +10,7 @@ import FecharConta from '../pages/fecharconta'
 import eventos from '../pages/eventos';
 import abrircomanda from '../pages/abrircomanda'
 import comanda from '../pages/comanda'
+import relatorios from '../pages/relatorios'
 
 
 function Routers() {
@@ -26,6 +27,7 @@ function Routers() {
                 <Route path="/eventos" component={eventos} />
                 <Route path="/abrircomanda" component={abrircomanda} />
                 <Route path="/comanda" component={comanda} />
+                <Route path="/relatorios" component={relatorios} />
             </Switch>
         </BrowserRouter>
     )

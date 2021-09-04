@@ -15,7 +15,7 @@ function Cadastre() {
     const [email, setEmail] = useState("");
     const [telefone, setTelefone] = useState("");
     const [senha, setSenha] = useState("");
-
+    const [error, setError] = useState("");
     const [loading, setLoading] = useState(false);
 
     const history = useHistory()
@@ -38,7 +38,7 @@ function Cadastre() {
         setLoading(false);
 
         if (data === 0) {
-            console.log("Email já cadastrado")
+            setError("Email já cadastrado")
         } else {
             history.push('/home')
             console.log("Usuario cadastrado com sucesso")
@@ -94,7 +94,9 @@ function Cadastre() {
                                 onChange={event => setEmail(event.target.value)}
                         />
 
-                        
+                        <div className="returnErrorCadastro">
+                            {error}
+                        </div>
   
                         <TextField
                                 label="Telefone"

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom'
 import Badge from '@material-ui/core/Badge';
 import MailIcon from '@material-ui/icons/Mail';
@@ -25,6 +25,72 @@ function Comanda() {
       history.push('/abrircomanda')
     }
 
+    const [usuario, setUsuario] = useState([])
+    const [loading, setLoading] = useState(true);
+    const [produtos, setProdutos] = useState([])
+    const [mesa, setMesa] = useState([])
+    const [usuarioId, setUsuarioId] = useState([])
+    const [preco, setPreco] = useState([])
+
+   
+    async function Atualizar(){
+
+      console.log(preco)
+
+      try{
+          const values = {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ 'id_usuario_cadastrado': usuarioId }),
+            withCredentials: true,
+            credentials: 'include'
+        }
+
+        const response = await fetch('http://localhost:4000/relatoriopessoa', values);
+        const data = await response.json();
+        const responseTotal = await fetch('http://localhost:4000/relatoriopreco', values);
+        const dataTotal = await responseTotal.json();
+        
+            setProdutos(data)
+            setMesa(data[0].numero)
+            setPreco(dataTotal[0].total)
+         
+
+          
+      } catch (error) {
+        console.log(error)
+      }
+    }
+
+    useEffect(() => {
+    async function loadData(){
+      try{
+          const values = {
+            method: 'GET',
+            headers: { 'Content-Type': 'application/json' },
+            withCredentials: true,
+            credentials: 'include'
+        }
+
+        const response = await fetch('http://localhost:4000/validacaonome', values);
+        const data = await response.json();
+
+            setUsuario(data[0].name)
+            setUsuarioId(data[0].id_usuario_cadastrado)
+            setLoading(false);
+          
+      } catch (error) {
+        console.log(error)
+      }
+    }
+      loadData()
+
+  }, [])
+
+  if (loading) {
+    return <span>Carregando...</span>
+  }
+
 
   return(
     <>
@@ -33,17 +99,9 @@ function Comanda() {
                         <div className="logo">
                             <img className="logo1" src={logo} alt="" />
                         </div>
-                        <div className="voltar1">
-                            <Button
-                                variant="contained"
-                                color="primary"
-                                className="voltar1"
-                                onClick={navigateToPageAbrirComanda}>
-                                Voltar
-                            </Button>
-                        </div>
+                        
                         <div className="usuariologado">
-                            <p>Ola usuario</p>
+                            <p>{usuario}</p>
                         </div>
                         <div className="notificaçoes">
                             <Badge badgeContent={999} color="error">
@@ -58,9 +116,11 @@ function Comanda() {
                             <img src={bar1} alt="" />
                           
                           <div className="info">
-                            <p>Nome do usuario</p>
+                            <div className="usuariologado">
+                              <p>{usuario}</p>
+                            </div>
 
-                            <p>Numero da mesa</p>
+                            <p>Mesa <strong>{mesa}</strong></p>
                           </div>
 
                           <div className="fazerPedido">
@@ -75,16 +135,38 @@ function Comanda() {
                           </div>
                         </div>
                         <div className="informaçoesPedidos">
+                              <Button
+                              color="secondary"
+                              variant="outlined"
+                              onClick={Atualizar}
+                              >
+                                Atualizar Lista
+                              </Button>
                             <div className="listaPedidos">
+                              
                               <div className="produtosComanda">
                                   <p>Produtos</p>
+                                  {produtos.map(post => (
+                              <p>{post.produto}</p>
+                              ))}
                               </div>
                               <div className="preçoComanda">
                                 <p>Preço</p>
+                                {produtos.map(post => (
+                              <p>RS {post.preço},00</p>
+                              ))}
+                              </div>
+                              <div className="preçoComanda">
+                                <p>Quantidade</p>
+                                {produtos.map(post => (
+                              <p>{post.quantidade}</p>
+                              ))}
                               </div>
                             </div>
+
                             <div className="valorTotal">
                               <p>Valor Total</p>
+                              <p>RS {preco},00</p>
                             </div>
                           <div className="fecharPedido">
                           <Button 

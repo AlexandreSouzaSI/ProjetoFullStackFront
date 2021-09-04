@@ -13,6 +13,7 @@ function Login() {
 
     const [email, setEmail] = useState("");
     const [senha, setSenha] = useState("");
+    const [error, setError] = useState("");
 
 
     const [loading, setLoading] = useState(false);
@@ -37,9 +38,20 @@ function Login() {
         setLoading(false);
 
         if (data === 0) {
-            console.log("Usuario ou Senha invalidos")
+            setError("Usuario ou Senha invalidos")
         } else {
-            navigateToPageEstabelecimento();
+        
+            const values = {
+            method: 'GET',
+            headers: { 'Content-Type': 'application/json' },
+            withCredentials: true,
+            credentials: 'include'
+        }
+
+        const response = await fetch('http://localhost:4000/validacao', values);
+        await response.json();
+
+                navigateToPageEstabelecimento() 
         }
 
         }
@@ -101,11 +113,14 @@ function Login() {
                                 onChange={event => setSenha(event.target.value)}
                             />
                         </div>
+                        <div className="returnError">
+                            {error}
+                        </div>
                         <div>
                             <Button 
                                 id="entrar"
                                 variant="contained" 
-                                color="secondary" 
+                                color="primary" 
                                 onClick={handleSubmit}
                                 >
                                 Entrar

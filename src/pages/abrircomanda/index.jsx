@@ -23,13 +23,75 @@ function AbrirComanda() {
 
     const [mesas, setMesas] = useState([])
     const [loading, setLoading] = useState(true);
+    const [usuarioName, setUsuarioName] = useState({})
+    const [comanda, setComanda] = useState([])
+    const [usuarioId, setUsuarioId] = useState([])
 
+    async function addMesa(value) {
+
+            console.log(`Valor: ${value}`)
+            let  x = value;
+            
+            const values = {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ 'id_mesa': x, 'id_usuario_cadastrado': usuarioId }),
+              withCredentials: true,
+              credentials: 'include'
+             }
+      
+              const response = await fetch('http://localhost:4000/Comanda', values);
+              const data = await response.json();
+      
+                  setComanda(data)
+                  console.log(data)
+                  navigateToPageComanda()
+
+      }
+
+      
+  
+
+
+
+    useEffect(() => {
+    async function loadData(){
+      try{
+          const values = {
+            method: 'GET',
+            headers: { 'Content-Type': 'application/json' },
+            withCredentials: true,
+            credentials: 'include'
+        }
+
+        const response = await fetch('http://localhost:4000/validacaonome', values);
+        const data = await response.json();
+
+            setUsuarioName(data[0].name)
+            setUsuarioId(data[0].id_usuario_cadastrado)
+            setLoading(false);
+          
+      } catch (error) {
+        console.log(error)
+      }
+    }
+      loadData()
+
+  }, [])
 
   useEffect(() => {
     async function loadData(){
       try{
-          const response = await fetch('http://localhost:4000/mesas')
-          const data = await response.json()
+
+          const values = {
+            method: 'GET',
+            headers: { 'Content-Type': 'application/json' },
+            withCredentials: true,
+            credentials: 'include'
+        }
+
+        const response = await fetch('http://localhost:4000/mesas', values);
+        const data = await response.json();
 
           if (Array.isArray(data)) {
             setMesas(data)
@@ -63,7 +125,7 @@ function AbrirComanda() {
                             </Button>
                         </div>
                         <div className="usuariologado">
-                            <p>Ola usuario</p>
+                            <p>{usuarioName}</p>
                         </div>
                         <div className="notificaçoes">
                             <Badge badgeContent={999} color="error">
@@ -78,18 +140,22 @@ function AbrirComanda() {
                         <div className="abrirComanda">
                             {mesas.map(post => (
                               <MenuItem key={post.id_mesa}>
-                              <div className="mesas">
-                               <label>Mesa:</label>
-                                <p>{post.numero}</p>
-                                <Button
-                                    variant="contained"
-                                    color="primary"
-                                    className="voltar"
-                                    onClick={navigateToPageComanda}
-                                  >
-                                    Abrir Comanda
-                                </Button>
-                              </div>
+                                <div className="mesas">
+                                <label>Mesa:</label>
+                                  <p>
+                                  {post.numero}
+                                  </p>
+                                  <Button
+                                        variant="contained"
+                                        type="number"
+                                        color="primary"
+                                        className="voltar"
+                                        //onChange={event => setNumero(event.target.value)}
+                                        onClick={ () => addMesa(post.id_mesa) }
+                                        > 
+                                      Abrir Comanda
+                                  </Button>
+                                </div>
                               </MenuItem>
                             ))}
                             </div>

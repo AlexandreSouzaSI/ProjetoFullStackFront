@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react'
 import { useHistory } from 'react-router-dom'
 import Badge from '@material-ui/core/Badge';
 import MailIcon from '@material-ui/icons/Mail';
@@ -12,8 +13,6 @@ import './styles.css'
 
 function Estabelecimentos() {
 
-    
-
     const history = useHistory()
 
     function navigateToPageAbrirComanda() {
@@ -23,6 +22,39 @@ function Estabelecimentos() {
     function navigateToPageLogin() {
         history.push('/login')
     }
+
+    const [usuario, setUsuario] = useState("")
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+    async function loadData(){
+      try{
+          const values = {
+            method: 'GET',
+            headers: { 'Content-Type': 'application/json' },
+            withCredentials: true,
+            credentials: 'include'
+        }
+
+        const response = await fetch('http://localhost:4000/validacaonome', values);
+        const data = await response.json();
+
+            console.log({data})
+        
+            setUsuario(data[0].name)
+            setLoading(false);
+          
+      } catch (error) {
+        console.log(error)
+      }
+    }
+      loadData()
+
+  }, [])
+
+  if (loading) {
+    return <span>Carregando...</span>
+  }
 
         return(
             <>
@@ -41,7 +73,7 @@ function Estabelecimentos() {
                             </Button>
                         </div>
                         <div className="usuariologado">
-                            <p>Ola usuario</p>
+                                <p>Bem Vindo {usuario}</p>
                         </div>
                         <div className="notificaçoes">
                             <Badge badgeContent={999} color="error">
